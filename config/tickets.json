@@ -1,0 +1,100 @@
+{
+  "settings": {
+    "categories": ["857067344617799680", "857070269084467201", "857067522130182154", "857690441020080128"],
+    "ticketLogs": "857067194834485249",
+    "createChannel": "857067049989963806"
+  },
+  "ticketOptions": {
+    "title": "Create Tickets",
+    "description": [
+      "React accordingly with the ticket you want to open."
+    ],
+    "footer": "bedwarspractice.club"
+  },
+  "ticketTypes": [
+    {
+      "id": "management",
+      "parent": "860178425368412160",
+      "backupParent": "",
+      "access": [
+        "734746688270368849",
+        "738198908630728756",
+        "703935706958921809"
+      ]
+    },
+    {
+      "id": "general",
+      "parent": "857067344617799680",
+      "backupParent": "",
+      "name": "General Support",
+      "logs": "857067194834485249",
+      "short": "Support",
+      "disabled": false,
+      "emote": "✉️",
+      "description": [
+        "Please describe your issue so our staff team can assist you.",
+        "",
+        "It may take some time for a staff member to respond to your ticket, so",
+        "please be patient, and don't worry about being online when they do."
+      ],
+      "access": [
+        "703935706958921809",
+        "734746688270368849",
+        "738198908630728756",
+        "703935754388373514",
+        "798749786844692480"
+      ]
+    },
+    {
+      "id": "appeals",
+      "parent": "857067522130182154",
+      "backupParent": "857070269084467201",
+      "name": "Punishment Appeals",
+      "logs": "763099887528050708",
+      "short": "Appeals",
+      "disabled": false,
+      "emote": "🔨",
+      "description": [
+        "`1.` What platform is your punishment on? (In-game, Discord, etc..)",
+        "`2.` What were you punished for?",
+        "`3.` If you were banned, what is your Punishment ID? (shown on the ban screen)",
+        "`4.` What is your Minecraft username?",
+        "`5.` Are you innocent or guilty of breaking the rules?",
+        "`6.` Anything else to include?",
+        "",
+        "__Please be patient when waiting for a response to your appeal, and allow__",
+        "__up to 48 hours before pinging staff. Do not worry about being online__",
+        "__when an appeal member responds.__"
+      ],
+      "access": [
+        "761412746750590987"
+      ]
+    },
+    {
+      "id": "bugs",
+      "parent": "857690441020080128",
+      "backupParent": "",
+      "name": "Bug Reports",
+      "logs": "857690052515725332",
+      "short": "Bug Reports",
+      "disabled": false,
+      "emote": "🐛",
+      "description": [
+        "`1.` What is your Minecraft username?",
+        "`2.` Which platform have you found this bug on? (In-game, Discord, etc..)",
+        "`3.` Please describe, in full detail, the bug you have found.",
+        "`4.` Do you have any exact step(s) on how to re-create this bug?",
+        "`5.` Do you have any other information regarding this?",
+        "",
+        "__Please wait patiently for a moderator to follow up on this report, they__",
+        "__will need to ask you some questions regarding this.__"
+      ],
+      "access": [
+        "703935706958921809",
+        "734746688270368849",
+        "738198908630728756",
+        "703935754388373514"
+      ]
+    }
+  ]
+}

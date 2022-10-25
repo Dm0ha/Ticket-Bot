@@ -1,0 +1,5 @@
+.npm
+config/config.json
+node_modules
+launcher_accounts.json
+utils/database/sql.js
