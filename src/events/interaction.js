@@ -18,16 +18,33 @@ module.exports = async (bot, interaction) => {
 
   if (interaction.customID == "close") {
     const ticket = await TicketManager.get({ channelID: message.channel.id })
-    if (!ticket.success) return interaction.deferUpdate();
+    if (!ticket.success) {
+      try {
+        return interaction.deferUpdate();
+      } catch (error) {
+        console.error(error)
+        console.log('\n\nerror 1')
+        return null
+      }
+    }
+      
 
     const member = message.guild.members.cache.get(user.id)
-    if (!member.roles.cache.some(r => [
-      "703935706958921809", // admin
-      "734746688270368849", // manager
-      "738198908630728756", // srmod
-      "703935754388373514", // mod
-      "798749786844692480" // trainee
-    ].includes(r.id))) return interaction.deferUpdate();
+    // if (!member.roles.cache.some(r => [
+    //   "703935706958921809", // admin
+    //   "734746688270368849", // manager
+    //   "738198908630728756", // srmod
+    //   "703935754388373514", // mod
+    //   "798749786844692480" // trainee
+    // ].includes(r.id))) {
+    //   try {
+    //     return interaction.deferUpdate();
+    //   } catch (error) {
+    //     console.error(error)
+    //     console.log('\n\nerror 2')
+    //     return null
+    //   }
+    // }
 
     const channelMessages = (await message.channel.messages.fetch()).array().reverse()
     const messages = Buffer.from(channelMessages.map(message => `${message.author.tag}: ${message.content}`).join('\n'), 'utf-8');
@@ -116,7 +133,13 @@ module.exports = async (bot, interaction) => {
       const ticket = await TicketManager.get({ active: true, userID: user.id, type: ticketData.id })
       const channel = guild.channels.cache.get(ticket.data.channelID)
       await channel?.send({ content: `You already have a ticket open ${user.toString()}! Please resolve this ticket before creating a new one.` }).catch(err => err)
-      return interaction.deferUpdate();
+      try {
+        return interaction.deferUpdate();
+      } catch (error) {
+        console.error(error)
+        console.log('\n\nerror 3')
+        return null
+      }
     }
 
     const overwrites = [
@@ -170,5 +193,11 @@ module.exports = async (bot, interaction) => {
 
     await channel.send({ content: user.toString(), embeds: [embed], components: [row] })
   }
-  return interaction.deferUpdate();
+  try {
+    return interaction.deferUpdate();
+  } catch (error) {
+    console.error(error)
+    console.log('\n\nerror 4')
+    return null
+  }
 }
