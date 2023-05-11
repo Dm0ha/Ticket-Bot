@@ -168,10 +168,10 @@ module.exports = async (bot, interaction) => {
     const row = new MessageActionRow()
       .addComponents([
         new MessageButton()
-          .setLabel("Close")
-          .setEmoji("🔒")
-          .setStyle("DANGER")
-          .setCustomID("close")
+        .setLabel("Delete")
+        .setEmoji("⛔")
+        .setStyle("DANGER")
+        .setCustomID("close")
       ])
 
     /*new MessageButton()
