@@ -47,59 +47,50 @@ module.exports = class extends Command {
     	} else {
             msgInfo = ` If you have any more questions, please message <@213878039107469313>.\nAdditional Info: *${info}*`
         }
-        
 
-        if (message.content.includes('-aa') && !(message.content.includes('-aaf')) && !(message.content.includes('-aar'))) {
-            var msg = `Your appeal has been **accepted**.`
-            var ver = 'aa'
-            }
-        else if (message.content.includes('-aaf')) {
-            var msg = `Your appeal has been **accepted** and the ban has been marked as false.`
-            var ver = 'aaf'
-            }
-        else if (message.content.includes('-aar')) {
-            var msg = `Your appeal has been **accepted**. If you are caught with an inappropriate name or skin again, you will be permanently banned with no chance to appeal.`
-            var ver = 'aar'
-            }
-        else if (message.content.includes('-cda')) {
-            var msg = `Your appeal has been **denied**.` 
-            msgInfo = ` This decision is final.\nAdditional Info: *Anticheat - Autoclicking*`
-            var ver = 'cda'
-            }
-        else if (message.content.includes('-cd')) {
-            var msg = `Your appeal has been **denied**.` 
-            var ver = 'cd'
-            }
-        else if (message.content.includes('-rd')) {
-            var msg = `Your appeal has been **denied**. Your account is your responsibility.` 
-            var ver = 'rd'
-            }
-        else if (message.content.includes('-wd')) {
-            var msg = `Your appeal has been **denied**.`
-            ticketInfo = ` You must wait **${info}** more days before appealing. If you have any more questions, please put them here.`
-            if (processed_appeals) {
-            	msgInfo = ` You must wait **${info}** more days before appealing. If you have any more questions, please use <#${message.channel.id}>.`
-            } else {
-                msgInfo = ` You must wait **${info}** more days before appealing. If you have any more questions, please message <@213878039107469313>.`
-            }
-            var ver = 'wd'
-            }
-        else if (message.content.includes('-id')) {
-            var msg = `Your appeal has been **denied**. Multiple accounts have cheated on your network, resulting in your IP being blacklisted.`
-            var ver = 'id'
-            }
-        else if (message.content.includes('-gd')) {
-            var msg = `Your appeal has been **denied**. We only accept guilty appeals for punishments over 30 days.`
-            var ver = 'gd'
-            }
-        else if (message.content.includes('-cr')) {
-            var msg = `Your appeal has been closed as your issue has been resolved.`
-            var ver = 'cr'
-            }
-        else if (message.content.includes('-ci')) {
-            var msg = `Your appeal has been closed and remains indeterminate. You are welcome to appeal again.` 
-            var ver = 'ci'
-            }
+        var ver = message.content.split(' ')[0].slice(1)
+        switch (ver) {
+            case 'aa':
+                var msg = `Your appeal has been **accepted**.`
+                break;
+            case 'aaf':
+                var msg = `Your appeal has been **accepted** and the ban has been marked as false.`
+                break;
+            case 'aar':
+                var msg = `Your appeal has been **accepted**. If you are caught with an inappropriate name or skin again, you will be permanently banned with no chance to appeal.`
+                break;
+            case 'cda':
+                var msg = `Your appeal has been **denied**.`
+                msgInfo = ` This decision is final.\nAdditional Info: *Anticheat - Autoclicking*`
+                break;
+            case 'cd':
+                var msg = `Your appeal has been **denied**.`
+                break;
+            case 'rd':
+                var msg = `Your appeal has been **denied**. Your account is your responsibility.`
+                break;
+            case 'wd':
+                var msg = `Your appeal has been **denied**.`
+                ticketInfo = ` You must wait **${info}** more days before appealing. If you have any more questions, please put them here.`
+                if (processed_appeals) {
+                    msgInfo = ` You must wait **${info}** more days before appealing. If you have any more questions, please use <#${message.channel.id}>.`
+                } else {
+                    msgInfo = ` You must wait **${info}** more days before appealing. If you have any more questions, please message <@213878039107469313>.`
+                }
+                break;
+            case 'id':
+                var msg = `Your appeal has been **denied**. Multiple accounts have cheated on your network, resulting in your IP being blacklisted.`
+                break;
+            case 'cr':
+                var msg = `Your appeal has been **denied**. You have been caught cheating on multiple accounts.`
+                break;
+            case 'ci':
+                var msg = `Your appeal has been **denied**. You have been caught cheating on multiple accounts.`
+                break;
+            case 'gd':
+                var msg = `Your appeal has been **denied**. You have been caught cheating on multiple accounts.`
+                break;
+        }
         
         if (member.kickable) {
             member.send(`Hey ${member},\n${msg}${msgInfo}`).catch(err => err)
